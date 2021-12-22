@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/statesListFragment"
+        android:name="statesdemoapp.view.StatesListFragment"
+        android:label="states_us_list_fragment"
+        tools:layout="@layout/fragment_states_list">
+        <action
+            android:id="@+id/action_statesListFragment_to_stateDetailFragment"
+            app:destination="@id/stateDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_statesListFragment_to_technicalErrorfragment"
+            app:destination="@id/technicalErrorfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stateDetailFragment"
+        android:name="statesdemoapp.view.StateDetailFragment"
+        android:label="fragment_state_detail"
+        tools:layout="@layout/fragment_state_detail">
+        <argument
+            android:name="state"
+            app:argType="string" />
+        <argument
+            android:name="latitude"
+            app:argType="string" />
+        <argument
+            android:name="longitude"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_stateDetailFragment_to_statesListFragment2"
+            app:destination="@id/statesListFragment" />
+        <action
+            android:id="@+id/action_stateDetailFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_stateDetailFragment_to_registerUserFragment"
+            app:destination="@id/registerUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="statesdemoapp.view.LoginUserFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login_user">
+        <action
+            android:id="@+id/action_loginFragment_to_registerUserFragment"
+            app:destination="@id/registerUserFragment"
+            app:popUpTo="@id/registerUserFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginSuccessFragment"
+            app:destination="@id/loginSuccessFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_technicalErrorfragment"
+            app:destination="@id/technicalErrorfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerUserFragment"
+        android:name="statesdemoapp.view.RegisterUserFragment"
+        android:label="fragment_register_user"
+        tools:layout="@layout/fragment_register_user">
+        <action
+            android:id="@+id/action_registerUserFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/registerUserFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginSuccessFragment"
+        android:name="statesdemoapp.view.LoginSuccessFragment"
+        android:label="fragment_login_success"
+        tools:layout="@layout/fragment_login_success">
+        <action
+            android:id="@+id/action_loginSuccessFragment_to_statesListFragment"
+            app:destination="@id/statesListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_loginSuccessFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/technicalErrorfragment"
+        android:name="statesdemoapp.view.TechnicalErrorFragment"
+        android:label="fragment_technical_error"
+        tools:layout="@layout/fragment_technical_error">
+        <action
+            android:id="@+id/action_technicalErrorfragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="error_message"
+            app:argType="string" />
+    </fragment>
+</navigation>
